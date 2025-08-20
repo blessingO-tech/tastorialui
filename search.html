@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TasteTorial</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .navbar-brand {
+      font-weight: bold;
+      color: red !important;
+    }
+    .search-bar {
+      max-width: 500px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      display: flex;
+      overflow: hidden;
+    }
+    .search-bar input {
+      border: none;
+      flex: 1;
+      padding: 8px 12px;
+      outline: none;
+    }
+    .search-bar button {
+      background: #f1f1f1;
+      border: none;
+      padding: 8px 15px;
+    }
+    .filters .btn {
+      border-radius: 20px;
+      font-size: 14px;
+      margin-right: 8px;
+    }
+    .video-card img.thumb {
+      border-radius: 6px;
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .video-info {
+      font-size: 14px;
+      margin-left: 10px;
+    }
+    .video-author img {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-light bg-white border-bottom px-3">
+  <div class="d-flex align-items-center">
+    <button class="btn me-2"><i class="fas fa-bars"></i></button>
+    <a class="navbar-brand" href="#"><img src="img/Logo1.png" alt=""></a>
+  </div>
+  
+  <form class="d-flex mx-auto search-bar">
+    <input type="text" placeholder="Search">
+    <button type="button"><i class="fas fa-times"></i></button>
+    <button type="submit"><i class="fas fa-search"></i></button>
+  </form>
+
+  <div class="d-flex align-items-center">
+    <a href="#" class="me-3"><i class="fas fa-bell"></i></a>
+    <a href="#" class="me-3"><i class="fas fa-sync-alt"></i></a>
+    <a href="#"><img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle" width="35"></a>
+  </div>
+</nav>
+
+<!-- Filters -->
+<div class="container mt-3 d-flex justify-content-between align-items-center">
+  <div class="filters">
+    <button class="btn btn-outline-secondary btn-sm">All</button>
+    <button class="btn btn-outline-secondary btn-sm">Recently posted</button>
+    <button class="btn btn-outline-secondary btn-sm">Trending</button>
+    <button class="btn btn-outline-secondary btn-sm">Favourites</button>
+    <button class="btn btn-outline-secondary btn-sm">Tutorials</button>
+  </div>
+  <a href="#" class="text-secondary"><i class="fas fa-sliders-h"></i> Filters</a>
+</div>
+
+<!-- Video Grid -->
+<div class="container mt-4">
+  <div class="row g-4">
+    <!-- Video Card -->
+    <div class="col-md-4 video-card">
+      <img src="https://picsum.photos/400/200?random=10" class="thumb" alt="">
+      <div class="d-flex align-items-start mt-2">
+        <div class="video-author">
+          <img src="https://randomuser.me/api/portraits/men/15.jpg" alt="">
+        </div>
+        <div class="video-info">
+          <strong>Earn while you cook from home</strong><br>
+          Sam Easy Tutor <br> 2k views · 5 days ago
+        </div>
+        <div class="ms-auto">
+          <i class="fas fa-ellipsis-v"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 video-card">
+      <img src="https://picsum.photos/400/200?random=11" class="thumb" alt="">
+      <div class="d-flex align-items-start mt-2">
+        <div class="video-author">
+          <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="">
+        </div>
+        <div class="video-info">
+          <strong>Earn while you cook from home</strong><br>
+          Sam Easy Tutor <br> 2k views · 5 days ago
+        </div>
+        <div class="ms-auto">
+          <i class="fas fa-ellipsis-v"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 video-card">
+      <img src="https://picsum.photos/400/200?random=12" class="thumb" alt="">
+      <div class="d-flex align-items-start mt-2">
+        <div class="video-author">
+          <img src="https://randomuser.me/api/portraits/men/30.jpg" alt="">
+        </div>
+        <div class="video-info">
+          <strong>Earn while you cook from home</strong><br>
+          Sam Easy Tutor <br> 2k views · 5 days ago
+        </div>
+        <div class="ms-auto">
+          <i class="fas fa-ellipsis-v"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 video-card">
+      <img src="https://picsum.photos/400/200?random=13" class="thumb" alt="">
+      <div class="d-flex align-items-start mt-2">
+        <div class="video-author">
+          <img src="https://randomuser.me/api/portraits/women/40.jpg" alt="">
+        </div>
+        <div class="video-info">
+          <strong>Earn while you cook from home</strong><br>
+          Sam Easy Tutor <br> 2k views · 5 days ago
+        </div>
+        <div class="ms-auto">
+          <i class="fas fa-ellipsis-v"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 video-card">
+      <img src="https://picsum.photos/400/200?random=14" class="thumb" alt="">
+      <div class="d-flex align-items-start mt-2">
+        <div class="video-author">
+          <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="">
+        </div>
+        <div class="video-info">
+          <strong>Earn while you cook from home</strong><br>
+          Sam Easy Tutor <br> 2k views · 5 days ago
+        </div>
+        <div class="ms-auto">
+          <i class="fas fa-ellipsis-v"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 video-card">
+      <img src="https://picsum.photos/400/200?random=15" class="thumb" alt="">
+      <div class="d-flex align-items-start mt-2">
+        <div class="video-author">
+          <img src="https://randomuser.me/api/portraits/women/50.jpg" alt="">
+        </div>
+        <div class="video-info">
+          <strong>Earn while you cook from home</strong><br>
+          Sam Easy Tutor <br> 2k views · 5 days ago
+        </div>
+        <div class="ms-auto">
+          <i class="fas fa-ellipsis-v"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
