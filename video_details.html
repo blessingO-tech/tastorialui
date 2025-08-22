@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Page</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      background: #f9f9f9;
+      font-family: Arial, sans-serif;
+    }
+    .video-player {
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .video-actions i {
+      margin-right: 8px;
+      cursor: pointer;
+    }
+    .sidebar-video img {
+      width: 100%;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+    .comment-box {
+      background: #f0f0f0;
+      border-radius: 20px;
+      padding: 10px 15px;
+      margin-bottom: 15px;
+    }
+    .comment {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    .comment img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .comment-content {
+      background: #fff;
+      padding: 10px 15px;
+      border-radius: 10px;
+      flex: 1;
+    }
+    .comment-actions {
+      font-size: 13px;
+      margin-top: 5px;
+      color: #555;
+    }
+    .comment-actions i {
+      margin-right: 5px;
+    }
+    .follow-btn {
+      background: #e50914;
+      color: #fff;
+      border: none;
+      font-weight: 600;
+      padding: 6px 15px;
+      border-radius: 5px;
+    }
+    .video-description {
+      font-size: 15px;
+      margin-top: 10px;
+    }
+    .sidebar h5 {
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    .sidebar-item {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    .sidebar-item img {
+      width: 120px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .sidebar-item div {
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid p-3">
+    <div class="row">
+      
+      <!-- Main Video Section -->
+      <div class="col-lg-8">
+        <div class="video-player mb-3">
+          <video width="100%" controls poster="https://images.pexels.com/photos/2762942/pexels-photo-2762942.jpeg">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Your browser does not support video playback.
+          </video>
+        </div>
+        
+        <h5>Earn while you cook at home</h5>
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span>30K views</span>
+          <div class="video-actions">
+            <i class="fa-regular fa-thumbs-up"></i> 2.7K
+            <i class="fa-solid fa-share ms-3"></i> Repost
+            <i class="fa-regular fa-bookmark ms-3"></i> Save
+          </div>
+        </div>
+
+        <!-- Channel Info -->
+        <div class="d-flex align-items-center mb-3">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle me-2" width="45" height="45">
+          <div>
+            <strong>Cooksmith</strong><br>
+            <small class="text-muted">25K followers</small>
+          </div>
+          <button class="follow-btn ms-auto">Follow</button>
+        </div>
+
+        <!-- Video Description -->
+        <div class="video-description">
+          Love cooking? Why not get paid for it! In this video, we’ll show you smart and easy ways to earn money from your kitchen, whether you’re a home chef, a foodie, or just passionate about sharing your meals.
+          <br><b>#HomeChef #EarnFromHome #CookingHustle #FoodBusiness</b>
+        </div>
+
+        <hr>
+
+        <!-- Comments -->
+        <h6>45 Comments</h6>
+        <div class="comment-box">Post a comment...</div>
+
+        <!-- Comment 1 -->
+        <div class="comment">
+          <img src="https://randomuser.me/api/portraits/men/41.jpg">
+          <div class="comment-content">
+            <strong>James Hillerson</strong> <small class="text-muted">8 hours ago</small>
+            <p>Wow, I never thought I could actually make money just by cooking at home. Super helpful tips!</p>
+            <div class="comment-actions">
+              <i class="fa-regular fa-thumbs-up"></i> 150 · Reply
+            </div>
+          </div>
+        </div>
+
+        <!-- Comment 2 -->
+        <div class="comment">
+          <img src="https://randomuser.me/api/portraits/women/65.jpg">
+          <div class="comment-content">
+            <strong>Hannah Cooks</strong> <small class="text-muted">8 hours ago</small>
+            <p>This video gave me the push I needed to start selling my meals. Thank you!</p>
+            <div class="comment-actions">
+              <i class="fa-regular fa-thumbs-up"></i> 59 · Reply
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Section -->
+      <div class="col-lg-4 sidebar">
+        <h5>More videos From SamEasy</h5>
+
+        <div class="sidebar-item">
+          <img src="https://images.pexels.com/photos/4198026/pexels-photo-4198026.jpeg">
+          <div>
+            <strong>Learn how to prepare semo in 5 ways</strong><br>
+            <small>SamEasy · 8k views · 3 days ago</small>
+          </div>
+        </div>
+
+        <div class="sidebar-item">
+          <img src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg">
+          <div>
+            <strong>Turning Leftovers Into Delicious New Meals</strong><br>
+            <small>SamEasy · 8k views · 3 days ago</small>
+          </div>
+        </div>
+
+        <div class="sidebar-item">
+          <img src="https://images.pexels.com/photos/349609/pexels-photo-349609.jpeg">
+          <div>
+            <strong>Kitchen Hacks Every Home Cook Should Know</strong><br>
+            <small>SamEasy · 8k views · 3 days ago</small>
+          </div>
+        </div>
+
+        <div class="sidebar-item">
+          <img src="https://images.pexels.com/photos/1435895/pexels-photo-1435895.jpeg">
+          <div>
+            <strong>Healthy Snacks That Actually Taste Good</strong><br>
+            <small>SamEasy · 8k views · 3 days ago</small>
+          </div>
+        </div>
+
+        <div class="sidebar-item">
+          <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg">
+          <div>
+            <strong>Beginner’s Guide to African Cooking</strong><br>
+            <small>SamEasy · 8k views · 5 days ago</small>
+          </div>
+        </div>
+
+        <div class="sidebar-item">
+          <img src="https://images.pexels.com/photos/1049620/pexels-photo-1049620.jpeg">
+          <div>
+            <strong>Street Food Recipes You Can Make at Home</strong><br>
+            <small>SamEasy · 8k views · 5 days ago</small>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
