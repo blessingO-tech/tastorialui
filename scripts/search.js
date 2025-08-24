@@ -123,7 +123,6 @@ $().ready(function () {
                 }
             })
 
-            console.log(response.data.data)
 
             const categories = response.data.data;
 
