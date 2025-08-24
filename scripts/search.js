@@ -1,5 +1,5 @@
 const BASE_URL = 'http://localhost:4500';
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJlbWFpbCI6ImF3YXJkZW5lbkBnbWFpbC5jb20iLCJyb2xlIjoiY3JlYXRvciIsImlhdCI6MTc1NTUxMTI0OX0.0BnT8F6EWdyokRTPHenmvUrKPSNzHSUnGVGMQBM2DSo'
+const token = localStorage.getItem('token') || '';
 
 $().ready(function () {
     const placeholderTemplate = `<div class="col-md-4 video-card" aria-hidden="true">
@@ -78,7 +78,7 @@ $().ready(function () {
         }
 
         return `
-            <div class="col-md-4 video-card">
+            <div class="col-md-4 video-card" data-video-id="${video.id}">
                 <img
                 src="${video.thumbnailUrl}" 
                 class="thumb" 
@@ -167,10 +167,13 @@ $().ready(function () {
 
             videos.forEach(video => {
                 const videoHtml = videoTemplate(video);
-
                 videoContainer.append(videoHtml)
             });
 
+            $('.video-card').on('click', function (e) {
+                const videoId = $(this).data('video-id');
+                window.location.href = `./video_details.html?videoId=${videoId}`;
+            })
 
         } catch (error) {
             // console.log(error.response.data.message || error.message)

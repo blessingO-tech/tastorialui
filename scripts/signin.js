@@ -95,7 +95,7 @@ async function submitForm() {
         isLoading(false)
         localStorage.setItem("user", JSON.stringify(response.data.data.user));
         localStorage.setItem("token", response.data.data.token);
-        window.location.href = "home.html"
+        window.location.href = "search.html"
     } catch (error) {
         isLoading(false)
 

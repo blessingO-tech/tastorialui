@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,202 +14,309 @@
       background: #f9f9f9;
       font-family: Arial, sans-serif;
     }
+
     .video-player {
       border-radius: 10px;
       overflow: hidden;
     }
+
     .video-actions i {
       margin-right: 8px;
       cursor: pointer;
     }
+
     .sidebar-video img {
       width: 100%;
       border-radius: 6px;
       object-fit: cover;
     }
+
     .comment-box {
       background: #f0f0f0;
       border-radius: 20px;
       padding: 10px 15px;
       margin-bottom: 15px;
     }
+
     .comment {
       display: flex;
       gap: 10px;
       margin-bottom: 15px;
     }
+
     .comment img {
       width: 40px;
       height: 40px;
       border-radius: 50%;
       object-fit: cover;
     }
+
     .comment-content {
       background: #fff;
       padding: 10px 15px;
       border-radius: 10px;
       flex: 1;
     }
+
     .comment-actions {
       font-size: 13px;
       margin-top: 5px;
       color: #555;
     }
+
     .comment-actions i {
       margin-right: 5px;
     }
-    .follow-btn {
+
+    /* .follow-btn {
       background: #e50914;
       color: #fff;
       border: none;
       font-weight: 600;
       padding: 6px 15px;
       border-radius: 5px;
-    }
+    } */
+
     .video-description {
       font-size: 15px;
       margin-top: 10px;
     }
+
     .sidebar h5 {
       font-weight: 600;
       margin-bottom: 15px;
     }
+
     .sidebar-item {
       display: flex;
       gap: 10px;
       margin-bottom: 15px;
     }
+
     .sidebar-item img {
       width: 120px;
       height: 70px;
       object-fit: cover;
       border-radius: 5px;
     }
+
     .sidebar-item div {
       font-size: 13px;
     }
+
+    .active {
+      color: red;
+    }
   </style>
 </head>
+
 <body>
   <div class="container-fluid p-3">
-    <div class="row">
-      
+    <div id="placeholder-container" class="row">
+
       <!-- Main Video Section -->
       <div class="col-lg-8">
-        <div class="video-player mb-3">
-          <video width="100%" controls poster="https://images.pexels.com/photos/2762942/pexels-photo-2762942.jpeg">
-            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-            Your browser does not support video playback.
-          </video>
-        </div>
-        
-        <h5>Earn while you cook at home</h5>
-        <div class="d-flex justify-content-between align-items-center mb-2">
-          <span>30K views</span>
-          <div class="video-actions">
-            <i class="fa-regular fa-thumbs-up"></i> 2.7K
-            <i class="fa-solid fa-share ms-3"></i> Repost
-            <i class="fa-regular fa-bookmark ms-3"></i> Save
+        <div class="video-player mb-3" aria-hidden="true">
+          <div class="placeholder-glow">
+            <span class="placeholder col-12" style="height:400px; display:block; border-radius:6px;"></span>
           </div>
         </div>
 
-        <!-- Channel Info -->
-        <div class="d-flex align-items-center mb-3">
-          <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle me-2" width="45" height="45">
-          <div>
-            <strong>Cooksmith</strong><br>
-            <small class="text-muted">25K followers</small>
-          </div>
-          <button class="follow-btn ms-auto">Follow</button>
+
+        <!-- Title placeholder -->
+        <h5 class="placeholder-glow">
+          <span class="placeholder col-8"></span>
+        </h5>
+
+        <!-- Views + Date + Actions placeholder -->
+        <div class="placeholder-glow d-flex justify-content-between mb-3">
+          <span class="placeholder col-3"></span>
+          <span class="placeholder col-5"></span>
         </div>
 
-        <!-- Video Description -->
-        <div class="video-description">
-          Love cooking? Why not get paid for it! In this video, we’ll show you smart and easy ways to earn money from your kitchen, whether you’re a home chef, a foodie, or just passionate about sharing your meals.
-          <br><b>#HomeChef #EarnFromHome #CookingHustle #FoodBusiness</b>
+        <div class="d-flex align-items-center mb-3" aria-hidden="true">
+          <!-- Avatar placeholder -->
+          <span class="placeholder rounded-circle me-2" style="width:45px; height:45px; display:inline-block;"></span>
+
+          <!-- Author info placeholders -->
+          <div class="placeholder-glow flex-grow-1">
+            <span class="placeholder col-8"></span>
+            <span class="placeholder col-6"></span><br>
+            <span class="placeholder col-4"></span>
+          </div>
+
+          <!-- Follow button placeholder -->
+          <span class="placeholder col-2 ms-auto"
+            style="border: none;font-weight: 600;height: 50px; width: 100px; border-radius: 5px;"
+            aria-disabled="true"></span>
         </div>
 
-        <hr>
 
-        <!-- Comments -->
-        <h6>45 Comments</h6>
-        <div class="comment-box">Post a comment...</div>
+        <div class="video-description placeholder-glow" aria-hidden="true">
+          <!-- Description placeholder (multiple lines) -->
+          <span class="placeholder col-12 mb-2"></span>
+          <span class="placeholder col-10 mb-2"></span>
+          <span class="placeholder col-8 mb-2"></span>
 
-        <!-- Comment 1 -->
-        <div class="comment">
-          <img src="https://randomuser.me/api/portraits/men/41.jpg">
-          <div class="comment-content">
-            <strong>James Hillerson</strong> <small class="text-muted">8 hours ago</small>
-            <p>Wow, I never thought I could actually make money just by cooking at home. Super helpful tips!</p>
-            <div class="comment-actions">
-              <i class="fa-regular fa-thumbs-up"></i> 150 · Reply
-            </div>
-          </div>
-        </div>
-
-        <!-- Comment 2 -->
-        <div class="comment">
-          <img src="https://randomuser.me/api/portraits/women/65.jpg">
-          <div class="comment-content">
-            <strong>Hannah Cooks</strong> <small class="text-muted">8 hours ago</small>
-            <p>This video gave me the push I needed to start selling my meals. Thank you!</p>
-            <div class="comment-actions">
-              <i class="fa-regular fa-thumbs-up"></i> 59 · Reply
-            </div>
-          </div>
+          <!-- Tags placeholder -->
+          <span class="placeholder col-6"></span>
         </div>
       </div>
 
       <!-- Sidebar Section -->
       <div class="col-lg-4 sidebar">
-        <h5>More videos From SamEasy</h5>
+        <h5 class="placeholder-glow">
+          <span class="placeholder col-8"></span>
+        </h5>
 
-        <div class="sidebar-item">
-          <img src="https://images.pexels.com/photos/4198026/pexels-photo-4198026.jpeg">
+        <div>
+          <div class="sidebar-item d-flex align-items-center placeholder-glow" aria-hidden="true">
+            <!-- Thumbnail placeholder -->
+            <div class="placeholder me-2" style="width: 120px; height: 70px; border-radius: 10px;"></div>
+
+            <!-- Text placeholders -->
+            <div class="flex-grow-1">
+              <span class="placeholder col-10 mb-2"></span><br>
+              <span class="placeholder col-8"></span>
+            </div>
+          </div>
+
+          <div class="sidebar-item d-flex align-items-center placeholder-glow" aria-hidden="true">
+            <!-- Thumbnail placeholder -->
+            <div class="placeholder me-2" style="width: 120px; height: 70px; border-radius: 10px;"></div>
+
+            <!-- Text placeholders -->
+            <div class="flex-grow-1">
+              <span class="placeholder col-10 mb-2"></span><br>
+              <span class="placeholder col-8"></span>
+            </div>
+          </div>
+
+          <div class="sidebar-item d-flex align-items-center placeholder-glow" aria-hidden="true">
+            <!-- Thumbnail placeholder -->
+            <div class="placeholder me-2" style="width: 120px; height: 70px; border-radius: 10px;"></div>
+
+            <!-- Text placeholders -->
+            <div class="flex-grow-1">
+              <span class="placeholder col-10 mb-2"></span><br>
+              <span class="placeholder col-8"></span>
+            </div>
+          </div>
+
+          <div class="sidebar-item d-flex align-items-center placeholder-glow" aria-hidden="true">
+            <!-- Thumbnail placeholder -->
+            <div class="placeholder me-2" style="width: 120px; height: 70px; border-radius: 10px;"></div>
+
+            <!-- Text placeholders -->
+            <div class="flex-grow-1">
+              <span class="placeholder col-10 mb-2"></span><br>
+              <span class="placeholder col-8"></span>
+            </div>
+          </div>
+
+          <div class="sidebar-item d-flex align-items-center placeholder-glow" aria-hidden="true">
+            <!-- Thumbnail placeholder -->
+            <div class="placeholder me-2" style="width: 120px; height: 70px; border-radius: 10px;"></div>
+
+            <!-- Text placeholders -->
+            <div class="flex-grow-1">
+              <span class="placeholder col-10 mb-2"></span><br>
+              <span class="placeholder col-8"></span>
+            </div>
+          </div>
+
+          <div class="sidebar-item d-flex align-items-center placeholder-glow" aria-hidden="true">
+            <!-- Thumbnail placeholder -->
+            <div class="placeholder me-2" style="width: 120px; height: 70px; border-radius: 10px;"></div>
+
+            <!-- Text placeholders -->
+            <div class="flex-grow-1">
+              <span class="placeholder col-10 mb-2"></span><br>
+              <span class="placeholder col-8"></span>
+            </div>
+          </div>
+
+          <div class="sidebar-item d-flex align-items-center placeholder-glow" aria-hidden="true">
+            <!-- Thumbnail placeholder -->
+            <div class="placeholder me-2" style="width: 120px; height: 70px; border-radius: 10px;"></div>
+
+            <!-- Text placeholders -->
+            <div class="flex-grow-1">
+              <span class="placeholder col-10 mb-2"></span><br>
+              <span class="placeholder col-8"></span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="real-container" class="row">
+      <!-- Main Video Section -->
+      <div class="col-lg-8">
+        <div class="video-player mb-3">
+          <video id="video-player" width="100%" height="400px" controls
+            poster="https://images.pexels.com/photos/2762942/pexels-photo-2762942.jpeg">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Your browser does not support video playback.
+          </video>
+        </div>
+
+        <h5 id="video-title"></h5>
+        <div class="d-flex justify-content-between align-items-center mb-2">
           <div>
-            <strong>Learn how to prepare semo in 5 ways</strong><br>
-            <small>SamEasy · 8k views · 3 days ago</small>
+            <span id="video-views"></span>
+            <span id="video-created-at"></span>
+          </div>
+          <div class="video-actions">
+            <i id="like-btn" class="fa-regular fa-thumbs-up"></i> <span id="video-likes">2.7K</span>
+            <!-- <i class="fa-solid fa-share ms-3"></i> Repost -->
+            <i id="save-btn" class="fa-regular fa-bookmark ms-3"></i> <span id="save-text">Save</span>
+            <!-- <i class="fa-regular fa-clock ms-3"></i> Watch later -->
           </div>
         </div>
 
-        <div class="sidebar-item">
-          <img src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg">
+        <!-- Channel Info -->
+        <div class="d-flex align-items-center mb-3">
+          <img id="video-author-img" src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle me-2"
+            width="45" height="45">
           <div>
-            <strong>Turning Leftovers Into Delicious New Meals</strong><br>
-            <small>SamEasy · 8k views · 3 days ago</small>
+            <strong id="video-author">Cooksmith</strong><br>
+            <small class="text-muted" id="video-followers"></small>
           </div>
+          <button id="follow-btn" class="btn btn-outline-danger ms-auto">Follow</button>
         </div>
 
-        <div class="sidebar-item">
-          <img src="https://images.pexels.com/photos/349609/pexels-photo-349609.jpeg">
-          <div>
-            <strong>Kitchen Hacks Every Home Cook Should Know</strong><br>
-            <small>SamEasy · 8k views · 3 days ago</small>
-          </div>
+        <!-- Video Description -->
+        <div class="video-description">
+          <span id="video-description">
+
+          </span>
+          <!-- <br><b id="video-tags">#HomeChef #EarnFromHome #CookingHustle #FoodBusiness</b> -->
         </div>
 
-        <div class="sidebar-item">
-          <img src="https://images.pexels.com/photos/1435895/pexels-photo-1435895.jpeg">
-          <div>
-            <strong>Healthy Snacks That Actually Taste Good</strong><br>
-            <small>SamEasy · 8k views · 3 days ago</small>
-          </div>
+        <hr>
+
+        <!-- Comments -->
+        <h6 id="video-comments"></h6>
+
+        <div class="input-group mb-3">
+          <input type="text" id="comment-box" class="form-control" placeholder="Post a comment..." aria-label="comment"
+            aria-describedby="button-addon2">
+          <button class="btn btn-secondary comment-btn" type="button" id="comment-btn">Submit</button>
         </div>
 
-        <div class="sidebar-item">
-          <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg">
-          <div>
-            <strong>Beginner’s Guide to African Cooking</strong><br>
-            <small>SamEasy · 8k views · 5 days ago</small>
-          </div>
-        </div>
+        <div id="comments-section">
 
-        <div class="sidebar-item">
-          <img src="https://images.pexels.com/photos/1049620/pexels-photo-1049620.jpeg">
-          <div>
-            <strong>Street Food Recipes You Can Make at Home</strong><br>
-            <small>SamEasy · 8k views · 5 days ago</small>
-          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Section -->
+      <div class="col-lg-4 sidebar">
+        <h5>More videos From <span id="video-author-name"></span></h5>
+
+        <div id="more-videos">
+
         </div>
 
       </div>
@@ -216,5 +324,9 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/scripts/video_details.js"></script>
 </body>
+
 </html>
