@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .sidebar {
+      min-height: 100vh;
+      border-right: 1px solid #ddd;
+      padding: 20px 10px;
+    }
+    .sidebar a {
+      display: block;
+      padding: 8px 15px;
+      color: #333;
+      text-decoration: none;
+      font-size: 15px;
+    }
+    .sidebar a:hover, .sidebar .active {
+      color: red;
+      font-weight: bold;
+    }
+    .navbar-brand { font-weight: bold; color: red; }
+    .upload-placeholder {
+      border: 2px dashed #bbb;
+      height: 260px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3rem;
+      color: #888;
+      border-radius: 8px;
+    }
+    .video-preview {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .video-preview img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      position: relative;
+    }
+    .play-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2.5rem;
+      color: white;
+      background: rgba(0,0,0,0.4);
+      border-radius: 50%;
+      padding: 10px 15px;
+    }
+    .char-counter {
+      text-align: right;
+      font-size: 12px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+ <nav class="navbar navbar-light bg-white border-bottom px-3 sticky-top">
+  <div class="d-flex align-items-center w-100 justify-content-between">
+    <div class="d-flex align-items-center">
+       <button class="btn d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#sidebarOffcanvas">
+        <i class="fas fa-bars"></i>
+      </button>
+      <a class="navbar-brand ms-2" href="#"><img src="img/Logo1.png" alt="" height="32"></a>
+      <input class="form-control ms-3 d-none d-md-block" type="text" placeholder="Search" style="max-width: 400px;">
+    </div>
+    <div class="d-flex align-items-center">
+      <button class="btn btn-outline-dark me-2">+ Create</button>
+      <a href="#" class="me-3"><i class="far fa-bell"></i></a>
+      <a href="#"><img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle" width="35"></a>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+     <div class="col-lg-2 d-none d-lg-block sidebar">
+      <a href="#" class="active"><i class="fas fa-home me-2"></i> Home</a>
+      <a href="#"><i class="fas fa-fire me-2"></i> Trends</a>
+      <a href="#"><i class="fas fa-star me-2"></i> Hand Picked</a>
+      <a href="#"><i class="fas fa-thumbs-up me-2"></i> Most Liked</a>
+      <hr>
+      <a href="#"><i class="fas fa-play-circle me-2"></i> Tutorials</a>
+      <a href="#"><i class="fas fa-book me-2"></i> Recipes</a>
+      <a href="#"><i class="fas fa-lightbulb me-2"></i> Pro-Tips</a>
+      <a href="#"><i class="fas fa-sync-alt me-2"></i> Updates</a>
+      <a href="#"><i class="fas fa-save me-2"></i> Saved Videos</a>
+      <hr>
+      <a href="#"><i class="fab fa-twitter me-2"></i> Twitter</a>
+      <a href="#"><i class="fab fa-linkedin me-2"></i> LinkedIn</a>
+      <a href="#"><i class="fab fa-instagram me-2"></i> Instagram</a>
+      <a href="#"><i class="fab fa-youtube me-2"></i> YouTube</a>
+    </div>
+
+     <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarOffcanvas">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+        <a href="#" class="active"><i class="fas fa-home me-2"></i> Home</a>
+        <a href="#"><i class="fas fa-fire me-2"></i> Trends</a>
+        <a href="#"><i class="fas fa-star me-2"></i> Hand Picked</a>
+        <a href="#"><i class="fas fa-thumbs-up me-2"></i> Most Liked</a>
+        <hr>
+        <a href="#"><i class="fas fa-play-circle me-2"></i> Tutorials</a>
+        <a href="#"><i class="fas fa-book me-2"></i> Recipes</a>
+        <a href="#"><i class="fas fa-lightbulb me-2"></i> Pro-Tips</a>
+        <a href="#"><i class="fas fa-sync-alt me-2"></i> Updates</a>
+        <a href="#"><i class="fas fa-save me-2"></i> Saved Videos</a>
+        <hr>
+        <a href="#"><i class="fab fa-twitter me-2"></i> Twitter</a>
+        <a href="#"><i class="fab fa-linkedin me-2"></i> LinkedIn</a>
+        <a href="#"><i class="fab fa-instagram me-2"></i> Instagram</a>
+        <a href="#"><i class="fab fa-youtube me-2"></i> YouTube</a>
+      </div>
+    </div>
+
+     <div class="col-lg-10 col-12 p-4">
+      <div class="row">
+         <div class="col-lg-7 col-12 pe-lg-4">
+          <h5>Upload video</h5>
+          <p class="text-danger small">
+            <i class="fas fa-exclamation-circle me-1"></i>
+            Upload your video by selecting video category.
+          </p>
+
+          <div class="mb-3">
+            <select class="form-select w-100 w-md-50">
+              <option>Select your category</option>
+              <option>Tutorial</option>
+              <option>Recipe</option>
+              <option>Pro-Tips</option>
+            </select>
+          </div>
+
+          <div class="upload-placeholder mb-3">+</div>
+
+          <input type="text" class="form-control mb-3" placeholder="Video title">
+          <textarea class="form-control mb-1" rows="4" placeholder="Video description"></textarea>
+          <div class="char-counter">0/500</div>
+
+          <div class="d-flex gap-3 mt-3 flex-wrap">
+            <button class="btn btn-success flex-fill">Upload video</button>
+            <button class="btn text-white flex-fill" style="background-color: #FC0D1C;">Discard video</button>
+          </div>
+        </div>
+
+         <div class="col-lg-5 col-12 mt-4 mt-lg-0">
+          <h5>Video preview</h5>
+          <div class="video-preview mt-2">
+            <div class="position-relative">
+              <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800" alt="Food preview">
+              <span class="play-overlay"><i class="fas fa-play"></i></span>
+            </div>
+            <div class="p-3">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <div class="d-flex align-items-center">
+                  <img src="https://randomuser.me/api/portraits/men/36.jpg" class="rounded-circle me-2" width="40">
+                  <div>
+                    <strong>SamEasy</strong><br>
+                    <small class="text-muted">20k followers</small>
+                  </div>
+                </div>
+                <button class="btn btn-danger btn-sm">Follow</button>
+              </div>
+
+              <div class="d-flex gap-3 mb-2 flex-wrap">
+                <span><i class="far fa-thumbs-up"></i> 3.7k</span>
+                <span><i class="fas fa-retweet"></i> Repost</span>
+                <span><i class="far fa-bookmark"></i> Save</span>
+              </div>
+
+              <p class="fw-bold mb-1">Title Goes Here</p>
+              <p class="small text-muted">
+                Write a description of about 160 characters maximum and make sure the same is set for meta description.
+              </p>
+
+              <div class="d-flex justify-content-between mt-3 flex-wrap gap-2">
+                <button class="btn btn-outline-secondary flex-fill">Save as draft</button>
+                <button class="btn btn-dark flex-fill">Play preview</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
