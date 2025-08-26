@@ -62,7 +62,7 @@ $().ready(function () {
 
     function getOtherVideoHTML(video) {
         return `
-        <div class="sidebar-item">
+        <div class="sidebar-item" data-video-id="${video.id}" style="cursor: pointer;">
             <img src="${video.thumbnailUrl}"
             onerror="this.onerror=null;this.src='https://tastetorialmedia.blob.core.windows.net/thumbnail/5c10e8bc-f60c-498e-9b17-129e0743d9c4.jpeg';"
             >
@@ -111,7 +111,7 @@ $().ready(function () {
             $('#video-comments').text(formatNumbers(video.comments, 'comments'));
             $('#video-created-at').text(formatDate(video.createdAt));
             $('#video-followers').text(formatNumbers(video.creator.followers, 'followers'));
-            // $('#video-tags').text(video.tags.map(tag => `#${tag}`).join(' '));
+            $('#video-tags').text(video.tags.split(' ').map(tag => `#${tag}`).join(' '));
 
             $('#video-author-img')
                 .attr('src', video.creator.avatar || 'https://tastetorialmedia.blob.core.windows.net/avatar/54c7a2d1-a22a-4d95-b29d-62f78df39bd0.webp')
@@ -142,6 +142,11 @@ $().ready(function () {
                 otherVideos.forEach(v => {
                     const videoHtml = getOtherVideoHTML(v);
                     otherVideosContainer.append(videoHtml);
+                });
+
+                $('.sidebar-item').on('click', function (e) {
+                    const videoId = $(this).data('video-id');
+                    window.location.href = `./video_details.html?videoId=${videoId}`;
                 });
             } else {
                 otherVideosContainer.append('<p>No other videos from this creator.</p>');
@@ -323,4 +328,5 @@ $().ready(function () {
             console.error('Error following/unfollowing creator:', error);
         }
     });
+
 });

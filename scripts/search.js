@@ -1,5 +1,6 @@
 const BASE_URL = 'http://localhost:4500';
 const token = localStorage.getItem('token') || '';
+const user = JSON.parse(localStorage.getItem('user')) || null;
 
 $().ready(function () {
     const placeholderTemplate = `<div class="col-md-4 video-card" aria-hidden="true">
@@ -180,6 +181,22 @@ $().ready(function () {
             console.log(error);
         }
     }
+
+    if (user.role === 'creator') {
+        $('#create-video-btn').show()
+    } else {
+        $('#create-video-btn').hide()
+    }
+
+    $('#user-avatar')
+        .attr('src', user.avatar || 'https://tastetorialmedia.blob.core.windows.net/avatar/54c7a2d1-a22a-4d95-b29d-62f78df39bd0.webp')
+        .on('error', function () {
+            $(this).attr('src', 'https://tastetorialmedia.blob.core.windows.net/avatar/54c7a2d1-a22a-4d95-b29d-62f78df39bd0.webp');
+        });
+
+    $('#create-video-btn').on('click', function (e) {
+        window.location.href = './upload_video.html'
+    });
 
     $('.filters #all').on('click', function (e) {
         $('.filters button').removeClass('active');
