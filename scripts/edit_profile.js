@@ -1,12 +1,10 @@
-const BASE_URL = 'http://localhost:4500';
 const token = localStorage.getItem('token') || '';
-console.log(token);
 const user = JSON.parse(localStorage.getItem('user')) || null;
 
 $().ready(function () {
     $('#avatar-label').css(
         'background-image',
-        `url(${user.avatar || 'https://tastetorialmedia.blob.core.windows.net/avatar/54c7a2d1-a22a-4d95-b29d-62f78df39bd0.webp'})`
+        `url(${user.avatar || DEFAULT_AVATAR})`
     );
     $('#firstname').val(user.firstname);
     $('#lastname').val(user.lastname);
@@ -56,6 +54,7 @@ $().ready(function () {
         } catch (error) {
             isLoading(false);
             console.log(error);
+            window.location.href = '/error.html'
         }
     }
 
@@ -71,7 +70,8 @@ $().ready(function () {
             return response.data.data;
         } catch (error) {
             console.error(error);
-            throw error.response?.data.data || error.message;
+            // throw error.response?.data.data || error.message;
+            window.location.href = '/error.html'
         }
     }
 
@@ -92,6 +92,7 @@ $().ready(function () {
             }
         } catch (error) {
             console.log(error);
+            window.location.href = '/error.html'
         }
     }
 
@@ -211,40 +212,43 @@ $().ready(function () {
         rules: {
             avatar: {
                 required: true,
-                accept: "image/jpeg, image/png, image/jpg",
-                filesize: 10485760
+                extension: "jpg|jpeg|png|gif", // ✅
+                filesize: 10485760      // 10 MB
             }
         },
         messages: {
             avatar: {
                 required: "Please select an image",
-                accept: "Please select a valid image file (JPEG, PNG, JPG)",
+                extension: "Please select a valid image file (JPEG, JPG, PNG, GIF)",
                 filesize: "Image size must be less than 10 MB"
             }
         },
         errorElement: "span",
-        // errorPlacement: function (error, element) {
-        //     error.addClass("text-danger");
-        //     error.insertAfter(element);
-        // },
+
         submitHandler: async function (form, event) {
             event.preventDefault();
-            const formData = new FormData(form);
-            console.log(formData);
+            try {
+                const formData = new FormData(form);
 
-            // isLoading(true)
-
-            // const response = await uploadFile(formData, 'avatar')
-
-            // const result = await updateAvatar(response.url);
-
-            // localStorage.setItem('user', JSON.stringify(result.data));
-
-            // isLoading(false)
-
-            // window.location.reload();
+                isLoading(true)
+                const response = await uploadFile(formData, 'avatar')
+                const result = await updateAvatar(response.url);
+                localStorage.setItem('user', JSON.stringify(result.data));
+                isLoading(false)
+                window.location.reload();
+            } catch (error) {
+                console.log(error);
+                alert('Something went wrong')
+            }
         }
     });
+
+
+    $('#upload-btn').on('click', function (e) {
+        e.preventDefault();
+        $('#upload-form').trigger('submit');
+    });
+
 
     $('#avatar').on('change', function () {
         if (this.files && this.files[0]) {

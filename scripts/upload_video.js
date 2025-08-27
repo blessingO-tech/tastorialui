@@ -1,6 +1,5 @@
 const token = localStorage.getItem('token') || '';
 const user = JSON.parse(localStorage.getItem('user')) || null;
-const BASE_URL = 'http://localhost:4500';
 
 $().ready(async function () {
 
@@ -32,6 +31,7 @@ $().ready(async function () {
             });
         } catch (error) {
             console.error('Error fetching categories:', error);
+            window.location.href = '/error.html'
         }
     }
 
@@ -44,7 +44,7 @@ $().ready(async function () {
         // showImage(fileURL);
 
         $('#video-upload').hide();
-        $('#video-player').attr('poster', $('#thumbnail-preview').attr('src') || 'https://tastetorialmedia.blob.core.windows.net/thumbnail/5c10e8bc-f60c-498e-9b17-129e0743d9c4.jpeg');
+        $('#video-player').attr('poster', $('#thumbnail-preview').attr('src') || DEFAULT_THUMBNAIL);
         $('#video-player source').attr('src', fileURL);
         $('#video-player')[0].load();
         $('#video-player').removeClass('d-none').addClass('d-block');
@@ -57,7 +57,7 @@ $().ready(async function () {
 
         $('#thumbnail-upload').hide();
         $('#thumbnail-preview').attr('src', fileURL);
-        $('#video-player').attr('poster', fileURL || 'https://tastetorialmedia.blob.core.windows.net/thumbnail/5c10e8bc-f60c-498e-9b17-129e0743d9c4.jpeg');
+        $('#video-player').attr('poster', fileURL || DEFAULT_THUMBNAIL);
         $('#thumbnail-preview').removeClass('d-none').addClass('d-block');
     });
 
@@ -78,9 +78,9 @@ $().ready(async function () {
     }
 
     $('#user-avatar')
-        .attr('src', user.avatar || 'https://tastetorialmedia.blob.core.windows.net/avatar/54c7a2d1-a22a-4d95-b29d-62f78df39bd0.webp')
+        .attr('src', user.avatar || DEFAULT_AVATAR)
         .on('error', function () {
-            $(this).attr('src', 'https://tastetorialmedia.blob.core.windows.net/avatar/54c7a2d1-a22a-4d95-b29d-62f78df39bd0.webp');
+            $(this).attr('src', DEFAULT_AVATAR);
         });
 
     $('#video-tags').on('keypress', function (e) {
@@ -202,6 +202,7 @@ $().ready(async function () {
             } catch (error) {
                 isLoading(false);
                 console.error('Error uploading files:', error);
+                window.location.href = '/error.html'
             }
         }
     });

@@ -171,187 +171,84 @@
 
 <body>
 
-  <nav class="navbar navbar-light bg-white border-bottom px-3 sticky-top">
+  <nav class="navbar navbar-light bg-body-tertiary border-bottom px-3 sticky-top">
     <div class="d-flex align-items-center w-100 justify-content-between">
       <div class="d-flex align-items-center">
-        <button class="btn d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#sidebarOffcanvas">
-          <i class="fas fa-bars"></i>
-        </button>
-        <a class="navbar-brand ms-2" href="#"><img src="img/Logo1.png" alt="" height="32"></a>
-        <input class="form-control ms-3 d-none d-md-block" type="text" placeholder="Search" style="max-width: 400px;">
+        <a class="navbar-brand ms-2" href="dashboard.html"><img src="img/Logo1.png" alt="" height="32"></a>
       </div>
       <div class="d-flex align-items-center">
         <a href="#" class="me-3"><i class="far fa-bell"></i></a>
-        <a href="#"><img id="user-avatar" src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle"
-            width="35"></a>
+        <a href="edit_profile.html"><img id="user-avatar" src="https://randomuser.me/api/portraits/men/32.jpg"
+            class="rounded-circle" width="35"></a>
       </div>
     </div>
   </nav>
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-2 d-none d-lg-block sidebar">
-        <a href="#" class="active"><i class="fas fa-home me-2"></i> Home</a>
-        <a href="#"><i class="fas fa-fire me-2"></i> Trends</a>
-        <a href="#"><i class="fas fa-star me-2"></i> Hand Picked</a>
-        <a href="#"><i class="fas fa-thumbs-up me-2"></i> Most Liked</a>
-        <hr>
-        <a href="#"><i class="fas fa-play-circle me-2"></i> Tutorials</a>
-        <a href="#"><i class="fas fa-book me-2"></i> Recipes</a>
-        <a href="#"><i class="fas fa-lightbulb me-2"></i> Pro-Tips</a>
-        <a href="#"><i class="fas fa-sync-alt me-2"></i> Updates</a>
-        <a href="#"><i class="fas fa-save me-2"></i> Saved Videos</a>
-        <hr>
-        <a href="#"><i class="fab fa-twitter me-2"></i> Twitter</a>
-        <a href="#"><i class="fab fa-linkedin me-2"></i> LinkedIn</a>
-        <a href="#"><i class="fab fa-instagram me-2"></i> Instagram</a>
-        <a href="#"><i class="fab fa-youtube me-2"></i> YouTube</a>
-      </div>
+  <div class="row bg-body-tertiary justify-content-center py-4">
+    <form id="upload-video-form" class="shadow bg-white col-lg-8 col-12 py-2">
+      <h5>Upload video</h5>
 
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarOffcanvas">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title">Menu</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+      <select id="category" name="category" class="form-select mb-3 w-md-50">
+        <option value="">Select your category</option>
+      </select>
+
+      <div class="d-flex gap-3 mb-3">
+        <div class="" style="flex: 1">
+          <div id="video-upload" class="mb-2" style="max-height: 300px;">
+            <label for="video-input" class="upload-placeholder mb-2">Select video</label>
+            <input id="video-input" name="video" type="file" class="d-none" accept="video/*">
+          </div>
+
+          <video id="video-player" class="d-none mb-2" width="100%" height="300px" controls poster="">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Your browser does not support video playback.
+          </video>
+
+          <!-- <button id="upload-video-btn" class="btn btn-sm btn-success">Upload video</button> -->
         </div>
-        <div class="offcanvas-body">
-          <a href="#" class="active"><i class="fas fa-home me-2"></i> Home</a>
-          <a href="#"><i class="fas fa-fire me-2"></i> Trends</a>
-          <a href="#"><i class="fas fa-star me-2"></i> Hand Picked</a>
-          <a href="#"><i class="fas fa-thumbs-up me-2"></i> Most Liked</a>
-          <hr>
-          <a href="#"><i class="fas fa-play-circle me-2"></i> Tutorials</a>
-          <a href="#"><i class="fas fa-book me-2"></i> Recipes</a>
-          <a href="#"><i class="fas fa-lightbulb me-2"></i> Pro-Tips</a>
-          <a href="#"><i class="fas fa-sync-alt me-2"></i> Updates</a>
-          <a href="#"><i class="fas fa-save me-2"></i> Saved Videos</a>
-          <hr>
-          <a href="#"><i class="fab fa-twitter me-2"></i> Twitter</a>
-          <a href="#"><i class="fab fa-linkedin me-2"></i> LinkedIn</a>
-          <a href="#"><i class="fab fa-instagram me-2"></i> Instagram</a>
-          <a href="#"><i class="fab fa-youtube me-2"></i> YouTube</a>
+        <div class="" style="flex: 1;">
+          <div class="mb-2" style="max-height: 300px;">
+            <div id="thumbnail-upload">
+              <label for="thumbnail-input" class="upload-placeholder mb-2">Select thumbnail</label>
+              <input id="thumbnail-input" name="thumbnail" type="file" class="d-none" accept="image/*">
+            </div>
+
+            <img id="thumbnail-preview" src="img/bg2.jpg" class="upload-placeholder d-none object-fit-cover"
+              style="max-height: 300px; height: 100%; width: 100%;" alt="Thumbnail Preview">
+
+          </div>
+          <!-- <button id="upload-thumbnail-btn" class="btn btn-sm btn-success">Upload thumbnail</button> -->
         </div>
       </div>
 
-      <div class="col-lg-10 col-12 p-4">
-        <div class="row">
-          <form id="upload-video-form" class="col-lg-10 col-12 pe-lg-4">
-            <h5>Upload video</h5>
-            <!-- <p class="text-danger small">
-              <i class="fas fa-exclamation-circle me-1"></i>
-              Upload your video by selecting video category.
-            </p> -->
-
-            <div class="mb-3">
-              <select id="category" name="category" class="form-select w-100 w-md-50">
-                <option value="">Select your category</option>
-              </select>
-            </div>
-
-            <div class="d-flex gap-3 mb-3">
-              <div class="" style="flex: 1">
-                <div id="video-upload" class="mb-2" style="max-height: 300px;">
-                  <label for="video-input" class="upload-placeholder mb-2">Select video</label>
-                  <input id="video-input" name="video" type="file" class="d-none" accept="video/*">
-                </div>
-
-                <video id="video-player" class="d-none mb-2" width="100%" height="300px" controls poster="">
-                  <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                  Your browser does not support video playback.
-                </video>
-
-                <!-- <button id="upload-video-btn" class="btn btn-sm btn-success">Upload video</button> -->
-              </div>
-              <div class="" style="flex: 1;">
-                <div class="mb-2" style="max-height: 300px;">
-                  <div id="thumbnail-upload">
-                    <label for="thumbnail-input" class="upload-placeholder mb-2">Select thumbnail</label>
-                    <input id="thumbnail-input" name="thumbnail" type="file" class="d-none" accept="image/*">
-                  </div>
-
-                  <img id="thumbnail-preview" src="img/bg2.jpg" class="upload-placeholder d-none object-fit-cover"
-                    style="max-height: 300px; height: 100%; width: 100%;" alt="Thumbnail Preview">
-
-                </div>
-                <!-- <button id="upload-thumbnail-btn" class="btn btn-sm btn-success">Upload thumbnail</button> -->
-              </div>
-            </div>
-
-            <div class="mb-2">
-              <input id="video-title" type="text" name="title" class="form-control" placeholder="Video title">
-            </div>
-            <div class="mb-3">
-              <textarea id="video-description" name="description" class="form-control mb-1" rows="4"
-                placeholder="Video description"></textarea>
-              <div class="char-counter">0/500</div>
-            </div>
-
-            <!-- <div>
-              <div>
-
-              </div>
-              <input id="video-tags" type="text" name="tags" class="form-control mb-3" placeholder="Tags">
-            </div> -->
-
-            <div class="input-group">
-              <div id="tag-list" class="input-group input-group-text"
-                style="padding: 0; flex-wrap: nowrap; width: auto;">
-
-
-              </div>
-              <input id="video-tags" type="text" name="tags" class="form-control"
-                placeholder="Enter video tags seperated by commas" aria-label="Enter video tags"
-                aria-describedby="btnGroupAddon">
-            </div>
-
-            <div class="d-flex justify-content-between gap-3 mt-3 flex-wrap">
-              <button id="upload-video-btn" type="submit" class="btn btn-success">Upload</button>
-              <button id="discard-video-btn" type="reset" class="btn text-white"
-                style="background-color: #FC0D1C;">Discard</button>
-            </div>
-          </form>
-
-          <!-- <div class="col-lg-5 col-12 mt-4 mt-lg-0">
-            <h5>Video preview</h5>
-            <div class="video-preview mt-2">
-              <div class="position-relative">
-                <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800" alt="Food preview">
-                <span class="play-overlay"><i class="fas fa-play"></i></span>
-              </div>
-              <div class="p-3">
-                <div class="d-flex align-items-center justify-content-between mb-2">
-                  <div class="d-flex align-items-center">
-                    <img id="video-author-avatar" src="https://randomuser.me/api/portraits/men/36.jpg"
-                      class="rounded-circle me-2" width="40">
-                    <div>
-                      <strong>SamEasy</strong><br>
-                      <small class="text-muted">20k followers</small>
-                    </div>
-                  </div>
-                  <button class="btn btn-danger btn-sm">Follow</button>
-                </div>
-
-                <div class="d-flex gap-3 mb-2 flex-wrap">
-                  <span><i class="far fa-thumbs-up"></i> 3.7k</span>
-                  <span><i class="fas fa-retweet"></i> Repost</span>
-                  <span><i class="far fa-bookmark"></i> Save</span>
-                </div>
-
-                <p class="fw-bold mb-1">Title Goes Here</p>
-                <p class="small text-muted">
-                  Write a description of about 160 characters maximum and make sure the same is set for meta
-                  description.
-                </p>
-
-                <div class="d-flex justify-content-between mt-3 flex-wrap gap-2">
-                  <button class="btn btn-outline-secondary flex-fill">Save as draft</button>
-                  <button class="btn btn-dark flex-fill">Play preview</button>
-                </div>
-              </div>
-            </div>
-          </div> -->
-        </div>
+      <div class="mb-2">
+        <input id="video-title" type="text" name="title" class="form-control" placeholder="Video title">
       </div>
-    </div>
+      <div class="mb-3">
+        <textarea id="video-description" name="description" class="form-control mb-1" rows="4"
+          placeholder="Video description"></textarea>
+        <div class="char-counter">0/500</div>
+      </div>
+
+      <div class="input-group">
+        <div id="tag-list" class="input-group input-group-text" style="padding: 0; flex-wrap: nowrap; width: auto;">
+
+
+        </div>
+        <input id="video-tags" type="text" name="tags" class="form-control"
+          placeholder="Enter video tags seperated by commas" aria-label="Enter video tags"
+          aria-describedby="btnGroupAddon">
+      </div>
+
+      <div class="d-flex justify-content-between gap-3 mt-3 flex-wrap">
+        <button id="upload-video-btn" type="submit" class="btn btn-success">Upload</button>
+        <button id="discard-video-btn" type="reset" class="btn text-white"
+          style="background-color: #FC0D1C;">Discard</button>
+      </div>
+    </form>
+  </div>
+
+  </div>
   </div>
 
   <div class="overlay" id="loading-overlay" style="display: none;">
@@ -361,6 +258,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.21.0/jquery.validate.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="scripts/config.js"></script>
   <script src="scripts/upload_video.js"></script>
 </body>
 

@@ -1,11 +1,11 @@
 const PASSWORD_LENGTH = 6
-const BASE_URL = 'http://localhost:4500'
 const STATUS = {
     INTIAL: 'initial',
     LOADING: 'loading',
     SUCCESS: 'success',
     ERROR: 'error'
 }
+
 
 function isLoading(loading) {
     const spinner = document.getElementById('login-spinner')
@@ -95,7 +95,7 @@ async function submitForm() {
         isLoading(false)
         localStorage.setItem("user", JSON.stringify(response.data.data.user));
         localStorage.setItem("token", response.data.data.token);
-        window.location.href = "search.html"
+        window.location.href = "dashboard.html"
     } catch (error) {
         isLoading(false)
 

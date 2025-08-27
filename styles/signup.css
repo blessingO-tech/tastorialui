@@ -23,6 +23,12 @@ body {
     background-size: cover;
 }
 
+@media screen and (max-width: 768px) {
+    .bg-container {
+        display: none;
+    }
+}
+
 .bg-container::before {
     content: "";
     position: absolute;

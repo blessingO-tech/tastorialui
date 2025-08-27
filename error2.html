@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Something went wrong — Error</title>
+    <style>
+        :root {
+            --bg: #0f1724;
+            --card: #0b1220;
+            --muted: #98a0b3;
+            --accent: #ff6b6b;
+            --accent-2: #7c5cff;
+            --glass: rgba(255, 255, 255, 0.03);
+            --radius: 14px;
+            --maxw: 880px;
+            --gap: 20px;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(1200px 600px at 10% 10%, rgba(124, 92, 255, 0.12), transparent 6%),
+                radial-gradient(900px 500px at 90% 90%, rgba(255, 107, 107, 0.08), transparent 6%),
+                var(--bg);
+            color: #e6eef8;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            padding: 32px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: var(--maxw);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            border-radius: var(--radius);
+            box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
+            padding: clamp(20px, 3vw, 36px);
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: clamp(16px, 2vw, 28px);
+            align-items: center;
+        }
+
+        @media (max-width:720px) {
+            .card {
+                grid-template-columns: 1fr;
+                text-align: center
+            }
+        }
+
+        .illustration {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            border-radius: 12px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), var(--glass));
+            box-shadow: inset 0 -6px 18px rgba(0, 0, 0, 0.25);
+            min-height: 160px;
+        }
+
+        .title {
+            margin: 0 0 6px 0;
+            font-size: clamp(20px, 3.2vw, 28px);
+            letter-spacing: -0.01em;
+        }
+
+        .subtitle {
+            margin: 0 0 16px 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .desc {
+            margin: 0 0 18px 0;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .controls {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .btn {
+            appearance: none;
+            border: 0;
+            padding: 10px 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(2, 6, 23, 0.5);
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            color: white;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--muted);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .meta {
+            margin-top: 12px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* small animated icon */
+        .pulse {
+            width: 96px;
+            height: 96px;
+            display: inline-grid;
+            place-items: center;
+            border-radius: 12px;
+            background: linear-gradient(180deg, rgba(124, 92, 255, 0.14), rgba(255, 107, 107, 0.06));
+            box-shadow: 0 6px 22px rgba(2, 6, 23, 0.6);
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-8px)
+            }
+
+            100% {
+                transform: translateY(0)
+            }
+        }
+
+        /* footer small link */
+        .footer-note {
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 10px;
+        }
+
+        a.small {
+            color: inherit;
+            text-decoration: underline;
+            color: #cfe0ff;
+        }
+
+        /* accessibility focus */
+        .btn:focus {
+            outline: 3px solid rgba(124, 92, 255, 0.18);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="card" role="main" aria-labelledby="error-title" aria-describedby="error-desc">
+        <div class="illustration" aria-hidden="true">
+            <div class="pulse" title="Error">
+                <!-- simple SVG -->
+                <svg width="52" height="52" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                    <circle cx="12" cy="12" r="10" stroke="white" stroke-opacity="0.18" stroke-width="1.2"></circle>
+                    <path d="M12 7v6" stroke="white" stroke-width="1.6" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M12 16h.01" stroke="white" stroke-width="1.6" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </div>
+        </div>
+
+        <div>
+            <h1 id="error-title" class="title">Oops — something went wrong</h1>
+            <p id="error-desc" class="subtitle">We hit an unexpected error while loading this page.</p>
+
+            <p class="desc">Try refreshing the page or return to the homepage. If the problem persists, check your
+                internet connection or contact support with the error code below.</p>
+
+            <div class="controls" role="group" aria-label="Error actions">
+                <button class="btn btn-primary" id="retryBtn" type="button">Retry</button>
+                <button class="btn btn-ghost" id="homeBtn" type="button">Go to homepage</button>
+                <button class="btn btn-ghost" id="reportBtn" type="button">Report issue</button>
+            </div>
+
+            <div class="meta" id="error-info">Error code: <strong id="errCode">—</strong></div>
+            <div class="footer-note">Tip: Press <kbd>Ctrl</kbd> + <kbd>R</kbd> (or <kbd>Cmd</kbd> + <kbd>R</kbd>) to
+                hard refresh.</div>
+        </div>
+    </main>
+
+    <script>
+        // Small UX helpers — change the URLs to match your app
+        (function () {
+            const retryBtn = document.getElementById('retryBtn');
+            const homeBtn = document.getElementById('homeBtn');
+            const reportBtn = document.getElementById('reportBtn');
+            const errCodeEl = document.getElementById('errCode');
+
+            // Example: Grab an error code from query string ?e=123 or generate timestamp
+            function getErrorCode() {
+                const params = new URLSearchParams(window.location.search);
+                return params.get('e') || 'E-' + Date.now().toString().slice(-5);
+            }
+
+            errCodeEl.textContent = getErrorCode();
+
+            retryBtn.addEventListener('click', function () {
+                // simple retry: reload the page
+                window.location.reload();
+            });
+
+            homeBtn.addEventListener('click', function () {
+                // change this to your app's landing page
+                window.location.href = '/';
+            });
+
+            reportBtn.addEventListener('click', function () {
+                const subject = encodeURIComponent('Error report: ' + getErrorCode());
+                const body = encodeURIComponent('I encountered an error on this page.\n\nURL: ' + location.href + '\nError code: ' + getErrorCode() + '\n\nDescribe what you were doing:\n');
+                window.location.href = 'mailto:support@example.com?subject=' + subject + '&body=' + body;
+            });
+
+            // keyboard: press Esc to go home
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') window.location.href = '/';
+            });
+        })();
+    </script>
+</body>
+
+</html>

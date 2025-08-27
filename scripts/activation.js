@@ -1,7 +1,4 @@
-
 $().ready(() => {
-    const BASE_URL = 'http://localhost:4500'
-
     async function activateAccount() {
         const params = new URLSearchParams(window.location.search);
         const token = params.get("token");

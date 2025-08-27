@@ -173,7 +173,7 @@ $().ready(() => {
 
             const savedVideos = response.data.data
 
-            console.log(savedVideos)
+
 
             const videoContainer = $('#saved')
             videoContainer.empty()

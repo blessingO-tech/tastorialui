@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TasteTorial</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles/dashboard.css">
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="img/Logo1.png" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-2 mt-lg-0" id="navbarSupportedContent">
+        <form class="d-flex mx-auto mb-3 mb-lg-0 search-bar rounded-pill">
+          <input type="text" placeholder="Search">
+          <button type="reset"><i class="fas fa-times"></i></button>
+          <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+
+
+        <div id="user" class="d-flex align-items-center">
+          <a href="#" class="me-3"><i class="fas fa-bell"></i></a>
+          <a href="#" class="me-3"><i class="fas fa-sync-alt"></i></a>
+          <a href="edit_profile.html"><img id="user-avatar" src="https://randomuser.me/api/portraits/men/32.jpg"
+              class="rounded-circle" width="35"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Filters -->
+  <div class="container mt-3 d-flex justify-content-between align-items-center">
+    <div class="filters">
+      <button id="all" class="btn btn-outline-secondary btn-sm active">All</button>
+      <button id="views" class="btn btn-outline-secondary btn-sm">Trending</button>
+      <button id="saved" class="btn btn-outline-secondary btn-sm">Saved</button>
+    </div>
+    <!-- <a href="#" class="text-secondary"><i class="fas fa-sliders-h"></i> Filters</a> -->
+  </div>
+
+  <!-- Video Grid -->
+  <div class="container mt-4">
+    <div id="video-list" class="row g-4">
+
+    </div>
+  </div>
+
+  <div class="modal fade" id="upgradeViewerModal" tabindex="-1" aria-labelledby="upgradeViewerModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <form id="upgrade-form" class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Want to become a creator?</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="creator-bio" class="form-label">Tell us more about yourself</label>
+            <textarea id="creator-bio" name="bio" class="form-control" rows="4"></textarea>
+            <div class="char-counter">0/500</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="overlay" id="loading-overlay" style="display: none;">
+    <span class="loader"></span>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.21.0/jquery.validate.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="scripts/config.js"></script>
+  <script src="scripts/dashboard.js"></script>
+</body>
+
+</html>

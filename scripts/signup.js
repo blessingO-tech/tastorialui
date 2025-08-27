@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:4500'
+
 
 $().ready(function () {
     function isLoading(loading) {
