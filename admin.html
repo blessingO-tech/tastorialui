@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TasteTorial - Admin</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="fav/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="fav/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="fav/favicon-16x16.png">
+  <link rel="manifest" href="fav/site.webmanifest">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles/admin.css">
+
+</head>
+
+<body class="bg-body-tertiary">
+
+  <nav class="navbar navbar-expand-lg border-bottom bg-body-tertiary sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="dashboard.html">
+        <img src="img/Logo1.png" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-2 mt-lg-0" id="navbarSupportedContent">
+        <div class="d-flex mx-auto mb-3 mb-lg-0 search-bar rounded-pill">
+          <input id="search-box" class="form-control" type="text" placeholder="Search" style="width: 400px;">
+        </div>
+
+
+        <div id="user" class="d-flex align-items-center">
+          <a href="#" class="me-3"><i class="fas fa-bell"></i></a>
+          <a href="#" class="me-3"><i class="fas fa-sync-alt"></i></a>
+          <a href="edit_profile.html"><img id="user-avatar" src="https://randomuser.me/api/portraits/men/32.jpg"
+              class="rounded-circle" width="35"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-10 p-4">
+        <!-- Filters -->
+        <h5>Admin</h5>
+        <div class="container my-3 d-flex justify-content-between align-items-center">
+          <div class="filters">
+            <button id="" class="btn btn-outline-secondary btn-sm active">All</button>
+            <button id="approved" class="btn btn-outline-secondary btn-sm">Approved</button>
+            <button id="pending" class="btn btn-outline-secondary btn-sm">Pending</button>
+            <button id="declined" class="btn btn-outline-secondary btn-sm">Declined</button>
+          </div>
+          <!-- <a href="#" class="text-secondary"><i class="fas fa-sliders-h"></i> Filters</a> -->
+        </div>
+
+
+
+        <div class="table-responsive">
+          <table id="creators-table" class="table table-striped table-bordered align-middle">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="viewCreatorModal" tabindex="-1" aria-labelledby="viewCreatorModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="viewCreatorModalLabel">Creator Details</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="mb-5 d-flex justify-content-center align-items-center flex-column">
+            <img id="creator-img" class="rounded-circle border" style="height: 120px; width: 120px;"
+              src="https://tastetorialmedia.blob.core.windows.net/avatar/54c7a2d1-a22a-4d95-b29d-62f78df39bd0.webp"
+              onerror="this.onerror=null;this.src='https://tastetorialmedia.blob.core.windows.net/avatar/54c7a2d1-a22a-4d95-b29d-62f78df39bd0.webp';">
+            <h5 id="creator-name" class="mt-2" style="font-weight: 500;"></h5>
+          </div>
+
+          <h5 class="text-bold" style="font-weight: 600;">Creator Details</h5>
+          <div id="creator-details" class="mb-5">
+            <table class="table table-sm table-striped">
+              <tbody>
+                <tr>
+                  <th class="label">Username</th>
+                  <td class="value" id="viewCreatorName"></td>
+                </tr>
+                <tr>
+                  <th class="label">Email</th>
+                  <td class="value" id="viewCreatorEmail"></td>
+                </tr>
+                <tr>
+                  <th class="label">Phone</th>
+                  <td class="value" id="viewCreatorPhone"></td>
+                </tr>
+                <tr>
+                  <th class="label">Birthday</th>
+                  <td class="value" id="viewCreatorDob"></td>
+                </tr>
+                <tr>
+                  <th class="label">Date applied</th>
+                  <td class="value" id="viewCreatorDate"></td>
+                </tr>
+                <tr>
+                  <th class="label">Status</th>
+                  <td class="value" id="viewCreatorStatus"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div>
+            <h5 style="font-weight: 600;">About me</h5>
+            <p id="viewCreatorAboutMe">
+              No about me
+            </p>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+  <div class="overlay" id="loading-overlay" style="display: none;">
+    <span class="loader"></span>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="scripts/config.js"></script>
+  <script src="scripts/admin.js"></script>
+</body>
+
+</html>
