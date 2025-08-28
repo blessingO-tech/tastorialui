@@ -24,7 +24,7 @@ $().ready(async function () {
         $('#aboutme').show()
         $('#bio').val(user.creator.bio || '');
     } else {
-        $('#aboutme').show()
+        $('#aboutme').hide()
         $('#bio').val('');
     }
 
