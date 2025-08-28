@@ -4,46 +4,11 @@ const token = localStorage.getItem('token') || '';
 const user = JSON.parse(localStorage.getItem('user')) || null;
 let videoCreatorId = localStorage.getItem('videoCreatorId') || '';
 
+if (!token || !user) {
+    window.location.href = 'login.html'
+}
+
 $().ready(function () {
-    function formatNumbers(number, text) {
-        let numberText;
-        if (number >= 1000000) {
-            numberText = (number / 1000000).toFixed(1).replace(/\.0$/, "") + "M " + text;
-        } else if (number >= 1000) {
-            numberText = (number / 1000).toFixed(1).replace(/\.0$/, "") + "K " + text;
-        } else {
-            numberText = number + " " + text;
-        }
-
-        return numberText;
-    }
-
-    function formatDate(date) {
-        const created = new Date(date);
-        const now = new Date();
-        const diffMs = now - created;
-        const diffSec = Math.floor(diffMs / 1000);
-        const diffMin = Math.floor(diffSec / 60);
-        const diffHr = Math.floor(diffMin / 60);
-        const diffDay = Math.floor(diffHr / 24);
-
-        let timeText;
-        if (diffDay >= 365) {
-            timeText = Math.floor(diffDay / 365) + " year" + (Math.floor(diffDay / 365) > 1 ? "s" : "") + " ago";
-        } else if (diffDay >= 30) {
-            timeText = Math.floor(diffDay / 30) + " month" + (Math.floor(diffDay / 30) > 1 ? "s" : "") + " ago";
-        } else if (diffDay >= 1) {
-            timeText = diffDay + " day" + (diffDay > 1 ? "s" : "") + " ago";
-        } else if (diffHr >= 1) {
-            timeText = diffHr + " hour" + (diffHr > 1 ? "s" : "") + " ago";
-        } else if (diffMin >= 1) {
-            timeText = diffMin + " minute" + (diffMin > 1 ? "s" : "") + " ago";
-        } else {
-            timeText = diffSec + " second" + (diffSec > 1 ? "s" : "") + " ago";
-        }
-
-        return timeText;
-    }
 
     function getCommentHTML(comment) {
         return `
@@ -61,7 +26,7 @@ $().ready(function () {
 
     function getOtherVideoHTML(video) {
         return `
-        <div class="sidebar-item" data-video-id="${video.id}" style="cursor: pointer;">
+        <div class="sidebar-item shadow-sm px-2 py-2" data-video-id="${video.id}" style="cursor: pointer;">
             <img src="${video.thumbnailUrl}"
             onerror="this.onerror=null;this.src=${DEFAULT_THUMBNAIL};"
             >
@@ -288,6 +253,7 @@ $().ready(function () {
             }
         } catch (error) {
             console.error('Error liking video:', error);
+            alert('An error occurred while liking the video. Please try again later.');
         }
     });
 
@@ -312,6 +278,7 @@ $().ready(function () {
             }
         } catch (error) {
             console.error('Error saving video:', error);
+            alert('An error occurred while saving the video. Please try again later.');
         }
     });
 
@@ -333,6 +300,7 @@ $().ready(function () {
             }
         } catch (error) {
             console.error('Error following/unfollowing creator:', error);
+            alert('An error occurred while following/unfollowing the creator. Please try again later.')
         }
     });
 

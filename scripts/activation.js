@@ -6,6 +6,10 @@ $().ready(() => {
         const success = $('.success-container')
         const fail = $('.fail-container')
 
+        if (!token) {
+            window.location.href = '/signup.html'
+        }
+
         try {
             const response = await axios.post(`${BASE_URL}/api/auth/activate?token=${token}`)
             // Redirect to login after 3 seconds
@@ -15,7 +19,7 @@ $().ready(() => {
                 success.show();
 
                 setTimeout(() => {
-                    window.location.href = "/signin.html";
+                    window.location.href = "/login.html";
                 }, 3000);
             } else {
                 throw new Error(response.data.message)

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="fav/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="fav/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="fav/favicon-16x16.png">
+  <link rel="manifest" href="fav/site.webmanifest">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles/signin.css">
+</head>
+
+<body>
+
+  <main>
+    <div class="bg-container">
+      <img src="img/Logo.png" alt="Tastetorial Logo" />
+      <!-- <h1>TASTETORIAL</h1> -->
+    </div>
+    <div class="login-container mx-4">
+      <form>
+        <h2 class="mb-2">Welcome Back</h2>
+        <p class="text-muted mb-4">Kindly, Sign in into your account</p>
+
+        <ul class="error-list">
+        </ul>
+        <!-- Email -->
+        <div class="form-group">
+          <div class="input-wrapper">
+            <i class="fa-solid fa-envelope input-icon"></i>
+            <input type="email" id="email" class="form-control" placeholder="Email address">
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <div class="input-wrapper">
+            <i class="fa-solid fa-lock input-icon"></i>
+            <input type="password" id="password" class="form-control" placeholder="Password">
+          </div>
+        </div>
+
+        <!-- Forgot Password (now outside the box) -->
+        <div class="d-flex justify-content-end mb-3">
+          <a href="#" class="forgot">Forgot Password?</a>
+        </div>
+
+        <!-- Sign in Button -->
+        <button id="signin-btn" class="btn w-100 mb-3 text-white" type="button" onclick="submitForm()">
+          <span id="login-spinner" class="loader"></span>
+          <span id="signin-txt">Sign In</span>
+        </button>
+
+        <!-- Sign up -->
+        <p class="text-center signup-link">Don’t Have an Account Yet ? <a href="signup.html">SIGN UP</a></p>
+
+        <!-- Divider -->
+        <div class="divider"><span>Or Sign in With</span></div>
+
+        <!-- Social Icons -->
+        <div class="d-flex justify-content-center social-icons">
+          <i class="fab fa-google"></i>
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-apple"></i>
+        </div>
+      </form>
+    </div>
+  </main>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="scripts/config.js"></script>
+  <script src="scripts/signin.js"></script>
+</body>
+
+</html>

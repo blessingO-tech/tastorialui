@@ -1,7 +1,11 @@
 const token = localStorage.getItem('token') || '';
 const user = JSON.parse(localStorage.getItem('user')) || null;
 
-$().ready(function () {
+if (!token || !user) {
+    window.location.href = 'login.html'
+}
+
+$().ready(async function () {
     $('#avatar-label').css(
         'background-image',
         `url(${user.avatar || DEFAULT_AVATAR})`
@@ -17,10 +21,45 @@ $().ready(function () {
         .addClass(user.role === 'creator' ? 'text-bg-success' : 'text-bg-secondary');
 
     if (user.role === 'creator') {
-        $('#bio').show().val(user.creator.bio || '');
+        $('#aboutme').show()
+        $('#bio').val(user.creator.bio || '');
     } else {
-        $('#bio').hide().val('');
+        $('#aboutme').show()
+        $('#bio').val('');
     }
+
+    $('#action-btn').on('click', function (e) {
+        const $btn = $(this);
+
+        if ($btn.text() === 'Edit') {
+            e.preventDefault();
+
+            $btn.attr('type', 'submit')
+                .text('Save')
+                .removeClass('btn-secondary')
+                .addClass('btn-primary');
+
+            $('#bio-form input, #bio-form textarea').prop('disabled', false);
+            if (!$('#cancel-btn').length) {
+                $('<button>')
+                    .attr('id', 'cancel-btn')
+                    .attr('type', 'button')
+                    .text('Cancel')
+                    .addClass('btn btn-sm btn-danger ms-2')
+                    .insertAfter($btn)
+                    .on('click', function () {
+                        $('#bio-form input, #bio-form textarea').prop('disabled', true);
+                        $btn.attr('type', 'button')
+                            .text('Edit')
+                            .removeClass('btn-primary')
+                            .addClass('btn-secondary');
+                        $('#cancel-btn').remove();
+                    });
+            }
+        }
+    });
+
+
 
 
 
@@ -46,7 +85,7 @@ $().ready(function () {
             })
 
             if (response.status === 200) {
-                const updatedUser = response.data
+                const updatedUser = response.data.data
                 isLoading(false);
 
                 return updatedUser;
@@ -94,6 +133,99 @@ $().ready(function () {
             console.log(error);
             window.location.href = '/error.html'
         }
+    }
+    function showMyVideosPlaceholder(num) {
+        const videoList = $('#video-list')
+        videoList.empty()
+        for (let i = 0; i < num; i++) {
+            videoList.append(`<div class="sidebar-item d-flex align-items-center placeholder-glow" aria-hidden="true">
+            <div class="placeholder me-2" style="width: 120px; height: 70px; border-radius: 10px;"></div>
+            <div class="flex-grow-1">
+              <span class="placeholder col-10 mb-2"></span><br>
+              <span class="placeholder col-8"></span>
+            </div>
+          </div>`)
+        }
+    }
+
+    function myVideosTemplate(video) {
+        return `
+        <div class="sidebar-item shadow-sm px-2 py-2" data-video-id="${video.id}">
+            <img 
+            src="${video.thumbnailUrl || DEFAULT_THUMBNAIL}"
+            alt="thumbnail"
+              onerror="this.onerror=null;this.src=${DEFAULT_THUMBNAIL};"
+            >
+            <div>
+              <strong>${video.title}</strong><br>
+              <small>${formatNumbers(video.views, 'views')} · ${formatNumbers(video.likes, 'likes')} . ${formatNumbers(video.comments, 'comments')}</small><br>
+              <small>${formatDate(video.createdAt)}</small><br>
+              <small class="text-muted">${video.status}</small>
+            </div>
+          </div>
+
+        `
+    }
+
+    const getQuery = (status, page = 1, limit = 6,) => {
+        let path = 'api/my-videos';
+
+        if (status) path += path.includes('?') ? `&status=${status}` : `?status=${status}`;
+        path += path.includes('?') ? `&page=${page}&limit=${limit}` : `?page=${page}&limit=${limit}`;
+
+        return path;
+    }
+
+
+    async function getMyVideos(path) {
+        showMyVideosPlaceholder(3)
+
+        try {
+            const response = await axios.get(`${BASE_URL}/${path}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+
+            return response.data.data
+        } catch (error) {
+            console.log('Error while fetching videos: ', error)
+        }
+    }
+
+    function renderMyVideos(videos) {
+        const videoList = $('#video-list')
+        videoList.empty()
+
+        if (videos.length === 0) {
+            videoList.append('<h3 class="text-center text-muted">No videos found</h3>')
+            return
+        } else {
+            videos.forEach(video => {
+                videoList.append(myVideosTemplate(video))
+            });
+
+            $('.sidebar-item').on('click', function (e) {
+                const videoId = $(this).data('video-id');
+                window.location.href = `./video_details.html?videoId=${videoId}`;
+            });
+        }
+    }
+
+    if (user.role === 'creator') {
+        $('#creator-corner').show()
+        const videos = await getMyVideos(getQuery())
+        renderMyVideos(videos)
+
+        $('.filters button').on('click', async function (e) {
+            $('.filters button').removeClass('active');
+            $(this).addClass('active');
+
+            const videos = await getMyVideos(getQuery(this.id))
+            renderMyVideos(videos)
+        });
+    } else {
+        $('#creator-corner').hide()
     }
 
 
@@ -147,13 +279,10 @@ $().ready(function () {
         errorElement: "span",
         submitHandler: async function (form, e) {
             e.preventDefault();
-            console.log('submitting...');
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries());
-            console.log(data);
             const result = await updateProfile('api/update-profile', data);
-            console.log(result.data);
-            localStorage.setItem('user', JSON.stringify(result.data));
+            localStorage.setItem('user', JSON.stringify(result));
             window.location.href = 'edit_profile.html';
         }
     });
@@ -257,6 +386,12 @@ $().ready(function () {
                 `url(${URL.createObjectURL(this.files[0])})`
             );
         }
+    });
+
+
+    $('#logout-btn').on('click', function () {
+        localStorage.removeItem('token');   // remove token
+        window.location.href = '/login.html';
     });
 
 })

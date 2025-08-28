@@ -2,6 +2,10 @@ const token = localStorage.getItem('token');
 const user = JSON.parse(localStorage.getItem('user'));
 let creatorList;
 
+if (!token || !user) {
+    window.location.href = 'login.html'
+}
+
 $().ready(function () {
     $('#user-avatar')
         .attr('src', user.avatar || DEFAULT_AVATAR)

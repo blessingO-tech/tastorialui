@@ -57,6 +57,25 @@ h3 {
     align-items: flex-start;
 }
 
+.sidebar-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.sidebar-item img {
+    width: 120px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.sidebar-item div {
+    font-size: 13px;
+}
+
 .upload-form {
     text-align: center;
     width: 200px;
