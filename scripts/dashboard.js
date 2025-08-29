@@ -64,7 +64,7 @@ $().ready(async function () {
             `
     }
 
-    const getQuery = (search, categoryId, orderBy, page = 1, limit = 12,) => {
+    const getQuery = (search, categoryId, orderBy, page = 1, limit = 10,) => {
         let path = 'api/videos';
 
         if (search) path += path.includes('?') ? `&search=${search}` : `?search=${search}`;
@@ -333,13 +333,13 @@ $().ready(async function () {
     $('.filters #all').on('click', async function (e) {
         $('.filters button').removeClass('active');
         $(this).addClass('active');
-        renderVideos(await fetchVideos(getQuery(null, null, '', 1, 12)));
+        renderVideos(await fetchVideos(getQuery(null, null, '', 1, 10)));
     });
 
     $('.filters #views').on('click', async function (e) {
         $('.filters button').removeClass('active');
         $(this).addClass('active');
-        renderVideos(await fetchVideos(getQuery(null, null, 'views', 1, 12)));
+        renderVideos(await fetchVideos(getQuery(null, null, 'views', 1, 10)));
     });
 
     $('.filters #saved').on('click', async function (e) {
@@ -360,7 +360,7 @@ $().ready(async function () {
         if (search) {
             console.log('Searching for:', search);
 
-            const query = getQuery(search, null, '', 1, 12);
+            const query = getQuery(search, null, '', 1, 10);
 
             renderVideos(await fetchVideos(query));
         }
