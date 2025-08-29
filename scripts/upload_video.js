@@ -201,7 +201,7 @@ $().ready(async function () {
                 });
 
 
-                window.location.href = 'search.html';
+                window.location.href = 'dashboard.html';
 
             } catch (error) {
                 isLoading(false);
