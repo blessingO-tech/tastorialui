@@ -64,7 +64,7 @@ $().ready(async function () {
             `
     }
 
-    const getQuery = (search, categoryId, orderBy, page = 1, limit = 6,) => {
+    const getQuery = (search, categoryId, orderBy, page = 1, limit = 12,) => {
         let path = 'api/videos';
 
         if (search) path += path.includes('?') ? `&search=${search}` : `?search=${search}`;
